@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c3js4jsf="http://c3js4jsf.org/c3js4jsf">
+	
+
+<h:head>
+</h:head>
+<h:body>
+	<h1>C3js4Jsf Showcase</h1>
+
+	<h:form>
+	<br />
+	<c3js4jsf:bar id="chart1"  groupsNames="#{sample.groupNames}" entries="#{sample.entries}" entriesColors="#{sample.entriesColors}"    />
+	<br />
+	<c3js4jsf:bar id="carBrandChart"  groupsNames="#{car.groupNames}" entries="#{car.entries}" entriesColors="#{car.entriesColors}" rotated="true"  />
+	<br />
+    <c3js4jsf:pie id="pieChart"  groupsNames="#{sample.groupNames}" entries="#{sample.entries}" entriesColors="#{sample.entriesColors}"  />
+	<br />
+	 <c3js4jsf:donut id="donutChart"  groupsNames="#{sample.groupNames}" entries="#{sample.entries}" entriesColors="#{sample.entriesColors}"  />
+	<br />
+	 <c3js4jsf:spline id="splineChart"  groupsNames="#{sample.groupNames}" entries="#{sample.entries}" entriesColors="#{sample.entriesColors}" rotated="true"  />
+	<br />
+	 <c3js4jsf:stackBar id="stackbarChart"  groupsNames="#{sample.groupNames}" entries="#{sample.entries}" entriesColors="#{sample.entriesColors}" rotated="true"  />
+	
+	</h:form>
+	
+	<p:tabView>
+            <p:tab title="bar.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;c3js4jsf:bar  id="chart1"  groupsNames="\#{sample.groupNames}" entries="\#{sample.entries}" entriesColors="\#{sample.entriesColors}" /&gt;
+
+
+                </pre>
+            </p:tab>
+
+            <p:tab title="Sample.java">
+                <pre name="code" class="brush:java">
+package org;
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+@ManagedBean(name = "sample")
+@RequestScoped
+public class Sample {
+	
+	private List&lt;String&gt; groupNames =  new ArrayList&lt;String&gt;();
+	private Map&lt;String,List&lt;Double&gt;&gt; entries = new TreeMap&lt;String, List&lt;Double&gt;&gt;();
+	private Map&lt;String,String&gt; entriesColors = new TreeMap&lt;String, String&gt;();
+	//private String chartType;
+	
+	@PostConstruct
+	public void init(){
+		groupNames.add("Group 1");
+		groupNames.add("Group 2");
+		entries.put("Set1",Arrays.asList(new Double[] { 100D, 1000D }));
+		entries.put("Set2",Arrays.asList(new Double[] { 200D, 2000D }));
+		entriesColors.put("Set1","#C00000");
+		entriesColors.put("Set2", "#ED7D31");
+		//chartType = "pie";
+	}
+	
+	public List&lt;String&gt; getGroupNames() {
+		return groupNames;
+	}
+	public void setGroupNames(List&lt;String&gt; groupNames) {
+		this.groupNames = groupNames;
+	}
+	public Map&lt;String, List&lt;Double&gt;&gt; getEntries() {
+		return entries;
+	}
+	public void setEntries(Map&lt;String, List&lt;Double&gt;&gt; entries) {
+		this.entries = entries;
+	}
+	public Map&lt;String, String&gt; getEntriesColors() {
+		return entriesColors;
+	}
+	public void setEntriesColors(Map&lt;String, String&gt; entriesColors) {
+		this.entriesColors = entriesColors;
+	}
+	/*public String getChartType() {
+		return chartType;
+	}
+	public void setChartType(String chartType) {
+		this.chartType = chartType;
+	}*/
+
+}
+
+
+                </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-74" />
+        </p:tabView>
+
+ 
+
+</h:body>
+</html>

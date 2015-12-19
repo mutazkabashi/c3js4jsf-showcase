@@ -1,0 +1,150 @@
+<!DOCTYPE html [
+    <!ENTITY nbsp "&#160;">
+    <!ENTITY bull "&#8226;">
+    <!ENTITY copy "&#169;">
+]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="shortcut icon" type="image/png" href="#{request.contextPath}/resources/main/images/favicon.png" />
+    </f:facet>
+
+    <title>C3JS4JSF ShowCase</title>
+    <h:outputStylesheet name="main/css/showcase.css" />
+    <h:outputStylesheet name="main/css/perfect-scrollbar.css" />
+    <h:outputStylesheet name="main/css/sh.css" />
+    <h:outputScript name="jquery/jquery.js" library="primefaces" />
+    <h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
+    <h:outputScript name="main/js/perfect-scrollbar.js" />
+    <h:outputScript name="main/js/showcase.js" />
+    <ui:insert name="head" />
+    <script type="text/javascript">
+		var _gaq = _gaq || [];
+  		_gaq.push(['_setAccount', 'UA-12200033-1']);
+  		_gaq.push(['_trackPageview']);
+
+  		(function() {
+   			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  		})();
+	</script>
+</h:head>
+
+<h:body>
+
+    <!-- PC CONTENT STARTS HERE-->
+    <div class="PC">
+        
+	<div id="MENUSIDE">
+    	<div id="MENUSIDEindent">
+            <span id="LOGO" class="bordersOfMenuSide">
+                <h:graphicImage name="main/images/logo.svg" />
+                <h:graphicImage id="BlueLogo" styleClass="hiddenLogo" name="main/images/logoBlue.svg" />
+            </span>
+            <div class="MenuSideMainLink bordersOfMenuSide"><h:graphicImage name="main/images/zoom.svg" class="zoomIcon"/></div>
+            
+            <span id="SubMenu-Ajax" class="MenuSideMainLink bordersOfMenuSide" onclick="Showcase.openSubMenu(this);"><h:graphicImage name="main/images/mono/ajaxCore.svg" /><h:graphicImage styleClass="hiddenIcons" name="main/images/mono/ajaxCoreBlue.svg" /><span class="MainLinkText">Bar Charts</span></span>
+            <div class="SubMenuLinkContainer">
+            	<a class="SubMenuLink" href="#{request.contextPath}/bar.xhtml">&bull; Bar</a>
+            	<a class="SubMenuLink" href="#{request.contextPath}/rotatedBar.xhtml">&bull; RotatedBar</a>
+            	<a class="SubMenuLink" href="#{request.contextPath}/barGroup.xhtml">&bull; BarGroup</a>
+            	<a class="SubMenuLink" href="#{request.contextPath}/rotatedBarGroup.xhtml">&bull; rotatedBarGroup</a>
+                <a class="SubMenuLink" href="#{request.contextPath}/stackBar.xhtml">&bull; StackBar</a>
+                
+                             
+            </div>
+            
+          
+            
+          
+            
+          
+           
+            
+           
+            
+            
+            
+           
+            
+            
+          
+        </div>
+    </div>
+        
+    <script type="text/javascript">
+        restoreMenuState();
+    </script>
+    
+    <div id="CONTENTSIDE">
+    	<div id="CONTENTSIDEindent">
+            
+        	<!-- header bar start-->
+		    <!-- header bar end-->
+
+            <ui:insert name="content">
+                
+                <ui:insert name="subsubmenu"></ui:insert>
+                
+                <div class="ContentSideSections">
+                    <div class="Content100 overHidden TextShadow">
+                        <span class="fontSize30 TextShadow orange mediumFont marginBottom20 dispBlock"><ui:insert name="title" /></span>
+                        <span class="defaultText dispTable"><ui:insert name="description" />
+                        </span>
+                    </div>
+                </div>
+
+                <div class="ContentSideSections Implementation">
+                    <ui:insert name="implementation" />
+                </div>
+
+                <div id="SourceContentSide" class="ContentSideSections Source">
+                    <div class="Content100 overHidden TextShadow">
+                        <span class="defaultText">
+                            <span class="fontSize18 logoBlueText">
+                                <ui:insert name="source" />
+                            </span>
+                        </span>
+                    </div>
+                </div>
+           
+            </ui:insert>
+            
+            <!-- footer start-->
+          
+            <!-- footer end-->
+            
+        </div>
+    </div>
+    
+    </div>
+    <!-- PC CONTENT END-->
+    
+     <ui:insert name="status">
+        <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">
+            <f:facet name="start">
+                <p:graphicImage name="main/images/loader.gif" />
+            </f:facet>
+
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+        </p:ajaxStatus>
+    </ui:insert>
+    
+    <ui:insert name="highlight">
+        <h:outputScript name="main/js/sh.js" target="body"/>
+    </ui:insert>
+    
+    <ui:insert name="body"></ui:insert>
+</h:body>
+</html>

@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c3js4jsf="http://c3js4jsf.org/c3js4jsf"
+	template="/WEB-INF/template.xhtml">
+	
+
+<ui:define name="title">
+        Charts - <span class="subitem">Bar</span>
+    </ui:define>
+    
+    <ui:define name="description">
+        Bar chart using &lt;c3js4jsf:bar /&gt; tag .
+    </ui:define>
+    <ui:define name="implementation">
+   <c3js4jsf:bar id="carBrandChart"  groupsNames="#{car.groupNames}" entries="#{car.entries}" entriesColors="#{car.entriesColors}"   />
+       
+    </ui:define>
+	
+	<ui:define name="source">
+        <p:tabView>
+            <p:tab title="rotatedBar.xhtml">
+                <pre name="code" class="brush:xml">
+&lt;c3js4jsf:bar id="carBrandChart"  groupsNames="\#{car.groupNames}" entries="\#{car.entries}" entriesColors="\#{car.entriesColors}" /&gt;
+                </pre>
+            </p:tab>
+	
+	
+
+         <p:tab title="Car.java">
+                <pre name="code" class="brush:java">
+package org.mutaz.c3js4jsf_showcase;
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+
+@ManagedBean(name = "car")
+@RequestScoped
+public class Car {
+	
+	private List&lt;String&gt; groupNames =  new ArrayList&lt;String&gt;();
+	private Map&lt;String,List&lt;Double&gt;&gt; entries = new TreeMap&lt;String, List&lt;Double&gt;&gt;();
+	private Map&lt;String,String&gt; entriesColors = new TreeMap&lt;String, String&gt;();
+	//private String chartType;
+	
+	@PostConstruct
+	public void init(){
+		groupNames.add("Toyota");
+		groupNames.add("BMW");
+		groupNames.add("Merceds Benz");
+		groupNames.add("Honda");
+		groupNames.add("Ford");
+		groupNames.add("Nissan");
+		groupNames.add("Audi");
+		groupNames.add("VW");
+		groupNames.add("Land Rover");
+		entries.put("Car Brand",Arrays.asList(new Double[] { 28.91D, 26.35D,21.97D,13.33D,13.11D,11.41D,10.13D,9.28D,4.99D,4.33D }));
+		//entries.put("Set2",Arrays.asList(new Double[] { 200D, 2000D }));
+		entriesColors.put("Car Brand","#C00000");
+		//entriesColors.put("Set2", "#ED7D31");
+		//chartType = "pie";
+	}
+	
+	public List&lt;String> getGroupNames() {
+		return groupNames;
+	}
+	public void setGroupNames(List&lt;String&gt; groupNames) {
+		this.groupNames = groupNames;
+	}
+	public Map&lt;String, List&lt;Double&gt;&gt; getEntries() {
+		return entries;
+	}
+	public void setEntries(Map&lt;String, List&lt;Double&gt;&gt; entries) {
+		this.entries = entries;
+	}
+	public Map&lt;String, String> getEntriesColors() {
+		return entriesColors;
+	}
+	public void setEntriesColors(Map&lt;String, String&gt; entriesColors) {
+		this.entriesColors = entriesColors;
+	}
+	/*public String getChartType() {
+		return chartType;
+	}
+	public void setChartType(String chartType) {
+		this.chartType = chartType;
+	}*/
+
+}
+
+
+        </pre>
+            </p:tab>
+            
+            <p:tab title="Documentation" titleStyleClass="tab-doc docslide-74" />
+        </p:tabView>
+
+    </ui:define>
+
+ 
+
+</ui:composition>
