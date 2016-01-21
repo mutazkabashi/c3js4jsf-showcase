@@ -4,11 +4,9 @@ Getting Started
 
 Deployable version of C3js4jsf war file can be downloaded manually or build it from sources.
 
-Prebuilt war
 
-For a full list of the available downloads, please visit the download page. Scroll down to showcase for war file link.
 
-Build from sources
+# Build from sources
 
 git clone https://github.com/mutazkabashi/c3js4jsf-showcase.git
 
