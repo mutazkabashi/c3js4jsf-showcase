@@ -1,34 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:c3js4jsf="http://c3js4jsf.org/c3js4jsf">
+	xmlns:c3js4jsf="http://c3js4jsf.org/c3js4jsf"
+	template="/WEB-INF/template.xhtml">
 	
 
-<h:head>
-</h:head>
-<h:body>
-	<h1>C3js4Jsf Showcase</h1>
-
-	<h:form>
-	<br />
+<ui:define name="title">
+        Charts - <span class="subitem">Bar</span>
+    </ui:define>
+    
+    <ui:define name="description">
+        Pie chart using &lt;c3js4jsf:pie /&gt; tag .
+    </ui:define>
+    <ui:define name="implementation">
     <c3js4jsf:pie id="pieChart"  groupsNames="#{sample.groupNames}" entries="#{sample.entries}" entriesColors="#{sample.entriesColors}"  />
-	</h:form>
+       
+    </ui:define>
 	
-	<p:tabView>
+	<ui:define name="source">
+        <p:tabView>
             <p:tab title="pie.xhtml">
                 <pre name="code" class="brush:xml">
 &lt;c3js4jsf:pie id="pieChart"  groupsNames="\#{sample.groupNames}" entries="\#{sample.entries}" entriesColors="\#{sample.entriesColors}" /&gt;
-
-
                 </pre>
             </p:tab>
+	
+	
 
-            <p:tab title="Sample.java">
+         <p:tab title="Sample.java">
                 <pre name="code" class="brush:java">
 package org;
 
@@ -91,13 +92,14 @@ public class Sample {
 }
 
 
-                </pre>
+        </pre>
             </p:tab>
             
             <p:tab title="Documentation" titleStyleClass="tab-doc docslide-74" />
         </p:tabView>
 
+    </ui:define>
+
  
 
-</h:body>
-</html>
+</ui:composition>
